@@ -55,7 +55,7 @@ fs.mounts = [
 #s.mount.sys.uri = "file:/sys"
 
 # Thiago 11/17 - Shama originally suggested 4 GB, Thiago 11 GB, SGX requires a power of 2, so...
-sgx.enclave_size = "16G"
+sgx.enclave_size = "32G"
 sgx.max_threads = 1024
 sgx.use_exinfo = true
 sgx.edmm_enable = {{ 'true' if env.get('EDMM', '0') == '1' else 'false' }}
