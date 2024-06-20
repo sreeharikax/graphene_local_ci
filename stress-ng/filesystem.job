@@ -74,7 +74,7 @@ timeout 60s
 #   start N workers that change directory between directories  using
 #   chdir(2)
 #
-chdir 0			# 0 means 1 stressor per CPU
+chdir 60		# 0 means 1 stressor per CPU
 # chdir-ops 1000000	# stop after 1000000 bogo ops
 # chdir-dirs 8192	# create 8192 directories
 

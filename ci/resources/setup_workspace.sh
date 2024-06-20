@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 
-docker system prune -af
+#docker system prune -af
 
 python3 $WORKSPACE/utils/env_setup.py
 
