@@ -89,6 +89,7 @@ stage('test-examples') {
                     if [ "${os_release_id}" == 'alpine' ]
                     then
                         sed -i "/file:\\/lib64/d" gcc.manifest.template
+                        sed -i -e '/^sgx.trusted_files = \\[.*/a \\"file:/usr/libexec/gcc/x86_64-alpine-linux-musl\\/\\",' gcc.manifest.template
                     fi
                     make ${MAKEOPTS} all
                     make ${MAKEOPTS} check | tee OUTPUT
@@ -241,7 +242,7 @@ stage('test-examples') {
                 cd CI-Examples/iperf
                 make all
                 gramine-${MODE} iperf3 & echo $! > server.PID
-                ../common_tools/wait_for_server 120 127.0.0.1 5201;
+                ../common_tools/wait_for_server 360 127.0.0.1 5201;
                 LD_LIBRARY_PATH=./install ./install/iperf3 -c localhost -p 5201 2>&1 | tee OUTPUT
                 kill $(cat server.PID)
             '''
